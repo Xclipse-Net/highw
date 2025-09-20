@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Site Under Construction</title>
+<meta name="description" content="We'll be back soon — Under construction">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body {
+  margin:0;
+  background:linear-gradient(135deg,#0b0f1a,#1b2230);
+  color:#fdfdfd;
+  font-family:"Roboto",sans-serif;
+  overflow-x:hidden;
+  animation:bgShift 10s infinite alternate;
+}
+@keyframes bgShift { from {background:linear-gradient(135deg,#0b0f1a,#1b2230);} to {background:linear-gradient(135deg,#1d2740,#242d48);} }
+h1,h2 { font-family:"Playfair Display",serif; letter-spacing:1px; }
+.uc-hero { padding:100px 20px; text-align:center; min-height:100vh; display:flex; align-items:center; justify-content:center; flex-direction:column; }
+.uc-title { font-size:56px; margin:0 0 20px; background:linear-gradient(90deg,#f4d35e,#e9c46a); -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation: fadeInDown 1s ease both; text-shadow:0 0 12px rgba(244,211,94,0.4);}
+.uc-sub { font-size:20px; opacity:0.9; margin-bottom:40px; max-width:640px; line-height:1.6; animation: fadeInUp 1.3s ease both;}
+.divider { width:80px; height:3px; background:linear-gradient(90deg,#f4d35e,#e9c46a); border-radius:999px; margin:24px auto; box-shadow:0 0 10px rgba(244,211,94,0.6); }
+
+.countdown { display:flex; gap:20px; flex-wrap:wrap; justify-content:center; margin-bottom:30px;}
+.countdown .unit { background: rgba(255,255,255,0.08); padding:24px 28px; border-radius:16px; min-width:100px; box-shadow:0 8px 24px rgba(0,0,0,0.3); transition: transform .4s ease, background .4s ease;}
+.countdown .unit:hover { transform: translateY(-6px) scale(1.05); background: rgba(255,255,255,0.15);}
+.countdown .value { font-size:34px; font-weight:700; display:block; animation:popIn 0.8s ease; color:#f4d35e;}
+.countdown .label { font-size:12px; opacity:0.7; margin-top:6px; letter-spacing:1px; text-transform:uppercase;}
+
+.progress { width:420px; max-width:90%; height:14px; background:rgba(255,255,255,0.08); border-radius:999px; overflow:hidden; margin:16px auto; }
+.progress > i { display:block; height:100%; width:0%; background:linear-gradient(90deg,#f4d35e,#e9c46a); border-radius:inherit; transition: width 1s ease; }
+.launch-note { margin-top:14px; font-size:14px; opacity:0.9; letter-spacing:0.5px; }
+
+.uc-actions { margin-top:30px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+.btn { padding:12px 22px; border-radius:999px; font-weight:600; cursor:pointer; text-decoration:none; transition:all .3s ease; }
+.btn--stroke { border:2px solid #f4d35e; color:#f4d35e; background:transparent; }
+.btn--stroke:hover { background:#f4d35e; color:#0b0f1a; }
+.btn--primary { background:#e9c46a; color:#0b0f1a; border:2px solid transparent; }
+.btn--primary:hover { background:#f4d35e; color:#0b0f1a; }
+
+.subscribe { display:flex; gap:10px; justify-content:center; margin-top:24px; flex-wrap:wrap;}
+.subscribe input[type="email"] { padding:12px 14px; border-radius:8px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.05); color:#fff; min-width:260px;}
+.subscribe input[type="email"]:focus { outline:none; border-color:#f4d35e; box-shadow:0 0 10px rgba(244,211,94,0.6); }
+.subscribe button { padding:12px 16px; border-radius:8px; border:0; background:linear-gradient(90deg,#f4d35e,#e9c46a); color:#0b0f1a; font-weight:600; cursor:pointer; transition:transform .3s ease;}
+.subscribe button:hover { transform:scale(1.05); }
+
+footer.s-footer { background:transparent; color:rgba(255,255,255,0.6); padding:20px 0; text-align:center; font-size:14px;}
+
+@keyframes fadeInDown { from {opacity:0; transform:translateY(-40px);} to {opacity:1; transform:translateY(0);} }
+@keyframes fadeInUp { from {opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
+@keyframes popIn { 0%{transform:scale(0.8);opacity:0;} 100%{transform:scale(1);opacity:1;} }
+
+#successPopup{
+  display:none;
+  position:fixed;
+  top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.7);
+  align-items:center; justify-content:center;
+  z-index:1000;
+}
+#successPopup > div{
+  background:#1c2333;
+  padding:30px;
+  border-radius:12px;
+  max-width:400px;
+  text-align:center;
+  color:#fff;
+  position:relative;
+}
+#successPopup button{
+  padding:10px 20px;
+  border-radius:8px;
+  border:none;
+  background:#e9c46a;
+  color:#0b0f1a;
+  cursor:pointer;
+}
+@media(max-width:600px){ .uc-title{font-size:34px;} .uc-sub{font-size:16px;} .countdown .unit{min-width:80px;padding:16px;} .countdown .value{font-size:24px;} }
+</style>
+</head>
+<body>
+
+<header class="s-header">
+  <div class="header-logo">
+    <a class="site-logo" href="index.html">
+      <img src="logo.png" alt="Church Logo" style="height:60px; filter: drop-shadow(0 0 6px rgba(244,211,94,0.8));">
+    </a>
+  </div>
+</header>
+
+<section class="s-hero uc-hero">
+  <h1 class="uc-title">A New Chapter is Coming</h1>
+  <div class="divider"></div>
+  <p class="uc-sub">Our digital sanctuary is under prayerful construction. In <strong>2 months</strong>, we’ll unveil something uplifting and renewed.</p>
+
+  <div class="countdown">
+    <div class="unit"><span class="value" id="days">00</span><span class="label">Days</span></div>
+    <div class="unit"><span class="value" id="hours">00</span><span class="label">Hours</span></div>
+    <div class="unit"><span class="value" id="minutes">00</span><span class="label">Minutes</span></div>
+    <div class="unit"><span class="value" id="seconds">00</span><span class="label">Seconds</span></div>
+  </div>
+
+  <div class="progress"><i id="progressBar"></i></div>
+  <div class="launch-note" id="launchNote">Estimated launch: —</div>
+
+  <div class="uc-actions">
+    <a class="btn btn--stroke" id="homeBtn">Return Home</a>
+    <button class="btn btn--primary" id="contactBtn">Contact Us</button>
+    <a class="btn btn--stroke" href="https://www.instagram.com/xclipsenetwork/" target="_blank">Contact Developer</a>
+  </div>
+
+  <form class="subscribe" id="subscribeForm">
+    <input type="email" id="email" placeholder="Enter your email for blessings & updates" required>
+    <button type="submit">Notify Me</button>
+  </form>
+</section>
+
+<footer class="s-footer">
+  <span>© 2025 — All Rights Reserved</span>
+</footer>
+
+<!-- Success Popup -->
+<div id="successPopup">
+  <div>
+    <span id="popupMessage"></span>
+    <button id="closePopup">Close</button>
+  </div>
+</div>
+
+<script src="site.js"></script>
+</body>
+</html>

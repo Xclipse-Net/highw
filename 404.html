@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Site Under Construction</title>
+  <meta name="description" content="We'll be back soon — Under construction">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* === GLOBAL STYLING === */
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #0b0f1a, #151c2e);
+      color: #fff;
+      font-family: "Segoe UI", Roboto, sans-serif;
+      overflow-x: hidden;
+      animation: bgShift 10s infinite alternate;
+    }
+    @keyframes bgShift {
+      from { background: linear-gradient(135deg,#0b0f1a,#151c2e); }
+      to   { background: linear-gradient(135deg,#1b2238,#242d48); }
+    }
+
+    .uc-hero {
+      padding: 100px 20px;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .uc-title {
+      font-size: 56px;
+      margin: 0 0 20px;
+      background: linear-gradient(90deg,#6dd3ff,#7b5cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInDown 1s ease both;
+    }
+    .uc-sub {
+      font-size: 20px;
+      opacity: 0.9;
+      margin-bottom: 40px;
+      animation: fadeInUp 1.3s ease both;
+    }
+
+    .countdown {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    .countdown .unit {
+      background: rgba(255,255,255,0.08);
+      padding: 24px 28px;
+      border-radius: 16px;
+      min-width: 100px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      transition: transform .4s ease, background .4s ease;
+    }
+    .countdown .unit:hover {
+      transform: translateY(-6px) scale(1.05);
+      background: rgba(255,255,255,0.15);
+    }
+    .countdown .value {
+      font-size: 34px;
+      font-weight: 700;
+      display: block;
+      animation: popIn 0.8s ease;
+    }
+    .countdown .label {
+      font-size: 12px;
+      opacity: 0.7;
+      margin-top: 6px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .progress {
+      width: 420px;
+      max-width: 90%;
+      height: 14px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 16px auto;
+    }
+    .progress > i {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #6dd3ff, #7b5cff);
+      border-radius: inherit;
+      transition: width 1s ease;
+    }
+    .launch-note {
+      margin-top: 14px;
+      font-size: 14px;
+      opacity: 0.9;
+      letter-spacing: 0.5px;
+    }
+
+    .uc-actions {
+      margin-top: 30px;
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .3s ease;
+    }
+    .btn--stroke {
+      border: 2px solid #6dd3ff;
+      color: #6dd3ff;
+      background: transparent;
+    }
+    .btn--stroke:hover {
+      background: #6dd3ff;
+      color: #0b0f1a;
+    }
+    .btn--primary {
+      background: #7b5cff;
+      color: #fff;
+      border: 2px solid transparent;
+    }
+    .btn--primary:hover {
+      background: #6dd3ff;
+      color: #0b0f1a;
+    }
+
+    .subscribe {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+    .subscribe input[type="email"] {
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      min-width: 260px;
+    }
+    .subscribe input[type="email"]:focus {
+      outline: none;
+      border-color: #6dd3ff;
+      box-shadow: 0 0 10px rgba(109,211,255,0.6);
+    }
+    .subscribe button {
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 0;
+      background: linear-gradient(90deg,#6dd3ff,#7b5cff);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform .3s ease;
+    }
+    .subscribe button:hover { transform: scale(1.05); }
+
+    footer.s-footer {
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      padding: 20px 0;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* === MODAL === */
+    .modal {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      animation: fadeIn .5s ease;
+    }
+    .modal.show { display: flex; }
+    .modal-content {
+      background: #1c2333;
+      padding: 30px;
+      border-radius: 12px;
+      width: 90%; max-width: 420px;
+      text-align: left;
+      animation: slideUp .5s ease;
+    }
+    .modal-content h2 { margin-top: 0; }
+    .modal-content input,
+    .modal-content textarea {
+      width: 100%;
+      margin-bottom: 12px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+    }
+    .modal-content button {
+      padding: 10px 16px;
+      background: #7b5cff;
+      color: #fff;
+      border: 0;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background .3s ease;
+    }
+    .modal-content button:hover { background: #6dd3ff; color: #0b0f1a; }
+    .close-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      position: absolute;
+      top: 20px; right: 30px;
+      cursor: pointer;
+    }
+
+    /* === ANIMATIONS === */
+    @keyframes fadeInDown { from {opacity:0; transform:translateY(-40px);} to {opacity:1; transform:translateY(0);} }
+    @keyframes fadeInUp { from {opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
+    @keyframes popIn { 0%{transform:scale(0.8);opacity:0;} 100%{transform:scale(1);opacity:1;} }
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+    @keyframes slideUp { from {transform:translateY(60px);opacity:0;} to {transform:translateY(0);opacity:1;} }
+
+    @media (max-width:600px){
+      .uc-title{font-size:34px;}
+      .uc-sub{font-size:16px;}
+      .countdown .unit{min-width:80px;padding:16px;}
+      .countdown .value{font-size:24px;}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="s-header">
+    <div class="header-logo">
+      <a class="site-logo" href="index.html"><img src="logo.png" alt="Logo" style="height:44px"></a>
+    </div>
+  </header>
+
+  <section class="s-hero uc-hero">
+    <h1 class="uc-title">Something Amazing is Coming Soon</h1>
+    <p class="uc-sub">We're hard at work! Our site will be back in <strong>2 months</strong> with something fresh and exciting.</p>
+
+    <div class="countdown">
+      <div class="unit"><span class="value" id="days">00</span><span class="label">Days</span></div>
+      <div class="unit"><span class="value" id="hours">00</span><span class="label">Hours</span></div>
+      <div class="unit"><span class="value" id="minutes">00</span><span class="label">Minutes</span></div>
+      <div class="unit"><span class="value" id="seconds">00</span><span class="label">Seconds</span></div>
+    </div>
+
+    <div class="progress"><i id="progressBar"></i></div>
+    <div class="launch-note" id="launchNote">Estimated launch: —</div>
+
+    <div class="uc-actions">
+      <a class="btn btn--stroke" id="homeBtn">Return Home</a>
+      <button class="btn btn--primary" id="contactBtn">Contact Us</button>
+    </div>
+
+    <form class="subscribe" id="subscribeForm">
+      <input type="email" id="email" placeholder="Enter your email for updates" required>
+      <button type="submit">Notify Me</button>
+    </form>
+  </section>
+
+  <footer class="s-footer">
+    <span>© Copyright YourSite — All rights reserved</span>
+  </footer>
+
+  <!-- Contact Modal -->
+  <div class="modal" id="contactModal">
+    <button class="close-btn" id="closeModal">&times;</button>
+    <div class="modal-content">
+      <h2>Contact Us</h2>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button id="sendMessage">Send</button>
+    </div>
+  </div>
+
+  <script src="js/site.js"></script>
+</body>
+</html>
